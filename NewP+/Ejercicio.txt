@@ -1,0 +1,35 @@
+• Crear los modelos y referencias
+
+rails g model User name
+rails g model Photo name:string user:references
+
+• Correr las migraciones
+
+rails db:setup
+rails db:migrate
+
+• Desde Rails C
+
+rails console
+
+• Insertar un usuario
+
+User.create(name: "Monica")
+monica = User.find(1)
+
+• Insertar una foto asociada al usuario (las fotos solo tienen nombre)
+
+Photo.create(name: "Lorem Ipsum", user_id: monica.id)
+
+• Intentar borrar el usuario (Esto debería mostrar error por violación de la FK)
+
+monica.destroy
+
+Resultado:
+   (0.4ms)  BEGIN
+  SQL (2.5ms)  DELETE FROM "users" WHERE "users"."id" = $1  [["id", 2]]
+   (0.5ms)  ROLLBACK
+ActiveRecord::InvalidForeignKey: PG::ForeignKeyViolation: ERROR:  update or delete on table "users" violates foreign key constraint "fk_rails_c79d76afc0" on table "photos"
+DETAIL:  Key (id)=(2) is still referenced from table "photos".
+: DELETE FROM "users" WHERE "users"."id" = $1
+	from (irb):12

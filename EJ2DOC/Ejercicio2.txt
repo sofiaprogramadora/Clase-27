@@ -1,0 +1,36 @@
+• Proyecto nuevo con PostgreSQL
+
+rails new EJ2 -d posgresql
+
+• Crear el modelo Category con el campo name:string
+
+rails g model Category name:string
+
+• Correr las migración generada por el modelo
+
+rails db:setup
+rails db:migrate
+
+• Abrir el archivo seed.rb
+
+//Abri el archivo seed.rb
+
+• Crear 5 categorías
+
+5.times do |i|
+	Category.create(name: "Category #{i}")
+end
+
+//En el terminal
+rails db:seed
+
+• Instanciar 3 categories y luego guardarlos
+
+rc
+3.times do |i|
+	Category.create(name: "Category #{i}")
+end
+
+• Borrar las categorías anteriores al principio del seed
+
+Category.delete_all

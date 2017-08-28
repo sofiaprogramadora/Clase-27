@@ -1,0 +1,36 @@
+• Proyecto nuevo con PostgreSQL
+
+rails new project -d posgresql
+
+• Crear el modelo Post con el campo title:string
+
+rails g model Post title:string
+
+• Correr las migración generada por el modelo
+
+rails db:setup
+rails db:migrate
+
+• Entrar a rails console
+
+	rails c
+
+• Instanciar un post con el título DesafíoLatam
+
+	Post.new(title: "DesafíoLatam")
+
+• Crear (guardar directamente) un post que diga "Aprendiendo modelos"
+
+	Post.create(title: "Aprendiendo Modelos")
+
+• Buscar el Post por el id
+
+Post.find(1).title
+
+• Mostrar el título del primer post
+
+Post.first.title
+
+• Buscar Posts por título ocupando where
+
+post = Post.where(title: "Aprendiendo Modelos")
